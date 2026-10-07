@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>國立幼兒保育系 四年級甲班 (ECD 4A) - 班級網頁</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font: Inter & Noto Sans TC -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ecd-pink': '#F7D6D0',
+                        'ecd-pink-dark': '#E5989B',
+                        'ecd-blue': '#D8E2DC',
+                        'ecd-blue-dark': '#8EAF9D',
+                        'ecd-cream': '#FFE5D9',
+                        'ecd-beige': '#F4ACB7',
+                        'ecd-accent': '#6B705C',
+                        'ecd-dark': '#4A4E69'
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', 'Inter', sans-serif;
+            background-color: #FAF7F2;
+            color: #4A4E69;
+        }
+        .tab-btn.active {
+            background-color: #E5989B;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(229, 152, 155, 0.4);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F1F1;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #D8E2DC;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #E5989B;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between custom-scrollbar">
+
+    <!-- Header Hero Banner -->
+    <header class="bg-gradient-to-r from-ecd-pink via-ecd-cream to-ecd-blue border-b border-pink-200/50 shadow-sm relative overflow-hidden">
+        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/30 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -left-10 -top-10 w-40 h-40 bg-ecd-pink-dark/10 rounded-full blur-2xl pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-4 text-center md:text-left">
+                    <div class="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center text-ecd-pink-dark text-3xl font-bold border-2 border-ecd-pink">
+                        <i class="fa-solid font-bold fa-baby-carriage"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 justify-center md:justify-start">
+                            <span class="bg-ecd-pink-dark text-white text-xs px-2.5 py-0.5 rounded-full font-semibold shadow-sm">2026 畢業班</span>
+                            <span class="text-xs text-ecd-accent font-medium"><i class="fa-solid fa-graduation-cap"></i> ECD Class 4A</span>
+                        </div>
+                        <h1 class="text-2xl sm:text-3xl font-black text-ecd-dark mt-1 tracking-tight">
+                            國立幼兒保育系 四年級甲班
+                        </h1>
+                        <p class="text-xs sm:text-sm text-ecd-dark/70 font-medium mt-0.5">
+                            <i class="fa-solid fa-heart text-ecd-pink-dark mr-1"></i> 用心陪伴‧愛心育苗‧四幼甲邁向夢想！
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Fast Info Badge -->
+                <div class="flex items-center gap-3 bg-white/80 px-4 py-2.5 rounded-2xl shadow-sm border border-pink-100 text-xs sm:text-sm">
+                    <div class="text-center px-2">
+                        <p class="text-xs text-gray-400">班級人數</p>
+                        <p class="font-bold text-ecd-dark text-base">42 人</p>
+                    </div>
+                    <div class="h-8 w-px bg-gray-200"></div>
+                    <div class="text-center px-2">
+                        <p class="text-xs text-gray-400">實習機構</p>
+                        <p class="font-bold text-ecd-dark text-base">18 所</p>
+                    </div>
+                    <div class="h-8 w-px bg-gray-200"></div>
+                    <div class="text-center px-2">
+                        <p class="text-xs text-gray-400">倒數畢業</p>
+                        <p class="font-bold text-ecd-pink-dark text-base">240 天</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs Bar -->
+            <nav class="mt-6 flex gap-2 overflow-x-auto pb-2 pt-1 custom-scrollbar text-xs sm:text-sm font-medium">
+                <button onclick="switchTab('members')" id="tab-members" class="tab-btn active transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-users"></i> 班級成員
+                </button>
+                <button onclick="switchTab('schedule')" id="tab-schedule" class="tab-btn transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-calendar-week"></i> 週課表
+                </button>
+                <button onclick="switchTab('polls')" id="tab-polls" class="tab-btn transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-square-poll-vertical"></i> 主題投票
+                </button>
+                <button onclick="switchTab('gallery')" id="tab-gallery" class="tab-btn transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-images"></i> 活動花絮
+                </button>
+                <button onclick="switchTab('projects')" id="tab-projects" class="tab-btn transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-diagram-project"></i> 畢專分組
+                </button>
+                <button onclick="switchTab('stories')" id="tab-stories" class="tab-btn transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-book-open-reader"></i> 實習心得
+                </button>
+                <button onclick="switchTab('directory')" id="tab-directory" class="tab-btn transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-address-book"></i> 通訊錄
+                </button>
+                <button onclick="switchTab('downloads')" id="tab-downloads" class="tab-btn transition-all duration-200 px-4 py-2 rounded-xl flex items-center gap-2 whitespace-nowrap bg-white text-ecd-dark hover:bg-ecd-pink/50">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> 檔案下載
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- SECTION 1: 班級成員 (Class Members) -->
+        <section id="sec-members" class="tab-content space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-pink-100">
+                <div>
+                    <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-ecd-pink-dark"></i> 四幼甲 優秀成員陣容
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-1">點選同學卡片可查看個人幼保專長與實習心得紀錄</p>
+                </div>
+                <div class="relative w-full sm:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                    <input type="text" id="studentSearch" onkeyup="filterStudents()" placeholder="搜尋姓名、職務或實習單位..." class="w-full pl-9 pr-4 py-2 bg-gray-50 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-ecd-pink-dark transition-all">
+                </div>
+            </div>
+
+            <div id="studentGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- JS dynamically renders student cards -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: 四年級課表 (Schedule) -->
+        <section id="sec-schedule" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2">
+                            <i class="fa-solid fa-calendar-days text-ecd-pink-dark"></i> 114學年度 上學期班級總課表
+                        </h2>
+                        <p class="text-xs text-gray-500 mt-0.5">教室位置：幼保大樓 C302 專業教案討論室</p>
+                    </div>
+                    <span class="bg-ecd-blue text-ecd-dark text-xs px-3 py-1.5 rounded-xl font-medium">導師：林秀美 教授</span>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                            <tr class="bg-ecd-pink/30 text-ecd-dark border-b border-pink-100">
+                                <th class="p-3 font-semibold rounded-tl-xl text-center w-20">節次 / 時間</th>
+                                <th class="p-3 font-semibold text-center">星期一</th>
+                                <th class="p-3 font-semibold text-center">星期二</th>
+                                <th class="p-3 font-semibold text-center">星期三</th>
+                                <th class="p-3 font-semibold text-center">星期四</th>
+                                <th class="p-3 font-semibold text-center rounded-tr-xl">星期五</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleTableBody" class="divide-y divide-gray-100 text-center">
+                            <!-- JS dynamically inserts schedule -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: 主題投票 (Polls) -->
+        <section id="sec-polls" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100">
+                <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2 mb-2">
+                    <i class="fa-solid fa-square-poll-vertical text-ecd-pink-dark"></i> 四幼甲 班級議題投票專區
+                </h2>
+                <p class="text-xs text-gray-500 mb-6">請全體同學踴躍表達意見，投票結果將作為班會決策依據！</p>
+
+                <div id="pollsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- JS renders polls dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 活動花絮 (Gallery) -->
+        <section id="sec-gallery" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2">
+                            <i class="fa-solid fa-camera-retro text-ecd-pink-dark"></i> 四年級精彩活動花絮
+                        </h2>
+                        <p class="text-xs text-gray-500 mt-0.5">記錄我們在幼保系的大學精彩時光</p>
+                    </div>
+                    <!-- Filter Tags -->
+                    <div class="flex flex-wrap gap-2 text-xs">
+                        <button onclick="filterGallery('all')" class="gallery-tag-btn active bg-ecd-pink-dark text-white px-3 py-1.5 rounded-xl font-medium transition-all">全部活動</button>
+                        <button onclick="filterGallery('internship')" class="gallery-tag-btn bg-gray-100 text-gray-600 px-3 py-1.5 rounded-xl font-medium hover:bg-gray-200 transition-all">幼兒園實習</button>
+                        <button onclick="filterGallery('exhibition')" class="gallery-tag-btn bg-gray-100 text-gray-600 px-3 py-1.5 rounded-xl font-medium hover:bg-gray-200 transition-all">教具展覽</button>
+                        <button onclick="filterGallery('party')" class="gallery-tag-btn bg-gray-100 text-gray-600 px-3 py-1.5 rounded-xl font-medium hover:bg-gray-200 transition-all">班級聚會</button>
+                    </div>
+                </div>
+
+                <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- JS renders gallery -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: 畢專分組 (Graduation Projects) -->
+        <section id="sec-projects" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2">
+                            <i class="fa-solid fa-diagram-project text-ecd-pink-dark"></i> 114學年度 畢業專題分組總覽
+                        </h2>
+                        <p class="text-xs text-gray-500 mt-0.5">包含專題題目、指導教授、組員分工與研發進度</p>
+                    </div>
+                    <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-3 py-1 rounded-full"><i class="fa-solid fa-clock"></i> 12月成果展</span>
+                </div>
+
+                <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- JS renders graduation projects -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: 實習心得 (Internship Stories) -->
+        <section id="sec-stories" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2">
+                            <i class="fa-solid fa-book-open-reader text-ecd-pink-dark"></i> 幼兒園/托育中心 實習心得交流
+                        </h2>
+                        <p class="text-xs text-gray-500 mt-0.5">實戰經驗傳承，紀錄教學中的點滴溫暖與挑戰</p>
+                    </div>
+                    <button onclick="togglePostStoryModal()" class="bg-ecd-pink-dark hover:bg-pink-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all shadow-sm flex items-center gap-2">
+                        <i class="fa-solid fa-pen"></i> 發布我的心得
+                    </button>
+                </div>
+
+                <div id="storiesList" class="space-y-5">
+                    <!-- JS renders story posts -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: 通訊聯絡簿 (Directory) -->
+        <section id="sec-directory" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2">
+                            <i class="fa-solid fa-address-book text-ecd-pink-dark"></i> 四幼甲 班級通訊聯絡簿
+                        </h2>
+                        <p class="text-xs text-gray-500 mt-0.5">提供全班通訊聯絡資訊，支援點擊一鍵複製 LINE / Email</p>
+                    </div>
+                    <div class="relative w-full sm:w-64">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                        <input type="text" id="dirSearch" onkeyup="filterDirectory()" placeholder="搜尋姓名或學號..." class="w-full pl-9 pr-4 py-2 bg-gray-50 text-xs rounded-xl border border-gray-200 focus:outline-none focus:border-ecd-pink-dark transition-all">
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead class="bg-ecd-pink/20 text-ecd-dark">
+                            <tr>
+                                <th class="p-3 rounded-l-xl font-semibold">座號/學號</th>
+                                <th class="p-3 font-semibold">姓名</th>
+                                <th class="p-3 font-semibold">幹部/角色</th>
+                                <th class="p-3 font-semibold">聯絡電話</th>
+                                <th class="p-3 font-semibold">LINE ID</th>
+                                <th class="p-3 rounded-r-xl font-semibold text-center">快捷複製</th>
+                            </tr>
+                        </thead>
+                        <tbody id="directoryTableBody" class="divide-y divide-gray-100">
+                            <!-- JS renders directory -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: 檔案下載區 (Downloads) -->
+        <section id="sec-downloads" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100">
+                <div class="mb-6">
+                    <h2 class="text-xl font-bold text-ecd-dark flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-down text-ecd-pink-dark"></i> 幼保實習與畢業專題 檔案下載區
+                    </h2>
+                    <p class="text-xs text-gray-500 mt-0.5">提供實習教案範本、觀察紀錄表、專題格式等必備表單檔</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="downloadsGrid">
+                    <!-- JS renders download items -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Photo Lightbox Modal -->
+    <div id="photoModal" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl relative">
+            <button onclick="closePhotoModal()" class="absolute top-3 right-3 bg-black/50 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/80 transition-all z-10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="h-64 sm:h-80 bg-ecd-pink/30 flex items-center justify-center relative overflow-hidden" id="modalImageContainer">
+                <i class="fa-solid fa-image text-ecd-pink-dark/40 text-6xl"></i>
+            </div>
+            <div class="p-5">
+                <span id="modalCategory" class="text-xs font-semibold px-2.5 py-1 rounded-full bg-ecd-pink text-ecd-dark">活動標籤</span>
+                <h3 id="modalTitle" class="text-lg font-bold text-ecd-dark mt-2"></h3>
+                <p id="modalDesc" class="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed"></p>
+                <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-100 text-xs text-gray-400">
+                    <span id="modalDate"></span>
+                    <span id="modalAuthor"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-ecd-dark text-white text-xs px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 z-50">
+        <i class="fa-solid fa-circle-check text-green-400"></i>
+        <span id="toastMsg">訊息已發送</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-pink-100 py-6 mt-12 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p>© 2026 國立幼兒保育系 四年級甲班 (ECD 4A) 版權所有</p>
+            <p class="flex items-center gap-1">
+                <span>Made with</span>
+                <i class="fa-solid fa-heart text-ecd-pink-dark"></i>
+                <span>for Early Childhood Education</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // ================= Global App Data =================
+        const studentsData = [
+            { id: 1, studentId: "4110101", name: "陳怡君", role: "班長 / 實習股長", quote: "用溫柔陪伴孩子的每一個成長瞬間！", kindergarten: "台北市立第一幼兒園", phone: "0912-345-678", email: "yichun@ecd.edu.tw", lineId: "yichun_ecd", avatarBg: "bg-pink-100 text-pink-600" },
+            { id: 2, studentId: "4110102", name: "林庭妤", role: "副班長", quote: "教育不是灌輸，而是點燃火焰。", kindergarten: "愛兒蒙特梭利托育中心", phone: "0923-456-789", email: "tingyu@ecd.edu.tw", lineId: "tingyu_04a", avatarBg: "bg-amber-100 text-amber-600" },
+            { id: 3, studentId: "4110103", name: "張雅婷", role: "學術股長", quote: "結合數位與繪本，翻轉幼兒學習！", kindergarten: "聖心雙語幼兒園", phone: "0934-567-890", email: "yating@ecd.edu.tw", lineId: "yating_draw", avatarBg: "bg-blue-100 text-blue-600" },
+            { id: 4, studentId: "4110104", name: "黃柏翰", role: "康樂股長", quote: "帶給孩子歡笑是我的終身使命！", kindergarten: "快樂森林幼兒園", phone: "0945-678-901", email: "bohan@ecd.edu.tw", lineId: "bohan_play", avatarBg: "bg-emerald-100 text-emerald-600" },
+            { id: 5, studentId: "4110105", name: "廖美玲", role: "美工股長", quote: "每一張教具，都藏著愛心與巧思。", kindergarten: "私立長庚紀念托嬰中心", phone: "0956-789-012", email: "meiling@ecd.edu.tw", lineId: "meiling_art", avatarBg: "bg-purple-100 text-purple-600" },
+            { id: 6, studentId: "4110106", name: "許家豪", role: "網管/總務", quote: "為幼兒創造最安全溫馨的環境。", kindergarten: "國立附設幼兒園", phone: "0967-890-123", email: "chiahao@ecd.edu.tw", lineId: "chiahao_tech", avatarBg: "bg-teal-100 text-teal-600" }
+        ];
+
+        const scheduleData = [
+            { time: "09:00 - 10:50", mon: "幼兒園實習 (三)", tue: "幼兒心智發展專題", wed: "幼兒教具設計與製作", thu: "畢業專題研討 (二)", fri: "幼兒園實習 (三)" },
+            { time: "11:00 - 11:50", mon: "幼兒園實習 (三)", tue: "班會與導師時間", wed: "幼兒教具設計與製作", thu: "畢業專題研討 (二)", fri: "幼兒園實習 (三)" },
+            { time: "13:10 - 15:00", mon: "兒童繪本創作與應用", tue: "幼兒遊戲治療簡介", wed: "幼兒園行政管理實務", thu: "特殊幼兒融合教育", fri: "教案討論與自主研習" },
+            { time: "15:10 - 17:00", mon: "兒童繪本創作與應用", tue: "幼兒音樂與律動", wed: "幼兒園行政管理實務", thu: "特殊幼兒融合教育", fri: "教案討論與自主研習" }
+        ];
+
+        let pollsData = [
+            {
+                id: 1,
+                title: "🎓 四幼甲 畢業旅行地點投票",
+                description: "預計於 10 月底進行 3 天 2 夜畢業旅行，請選出你最想去的目的地！",
+                options: [
+                    { id: "a", text: "澎湖跳島體驗 🌊", votes: 18 },
+                    { id: "b", text: "沖繩 4 天 3 夜自由行 🛫", votes: 15 },
+                    { id: "c", text: "墾丁包棟 Villa 烤肉派對 🌴", votes: 6 },
+                    { id: "d", text: "花蓮露營與溯溪 ⛺", votes: 3 }
+                ],
+                userVotedOption: null
+            },
+            {
+                id: 2,
+                title: "🎨 畢業專題成果展 主題名稱評選",
+                description: "12 月於系館舉辦之成果展的主視覺主題投票。",
+                options: [
+                    { id: "a", text: "「童心築夢‧繪聚未來」", votes: 22 },
+                    { id: "b", text: "「幼苗萌芽‧愛不打烊」", votes: 12 },
+                    { id: "c", text: "「幼保 4.0：探索童真新視野」", votes: 8 }
+                ],
+                userVotedOption: null
+            }
+        ];
+
+        const galleryData = [
+            { id: 1, title: "大三暑期幼兒園集中實習成果展", category: "internship", date: "2025-09-15", author: "陳怡君", desc: "同學們經過兩個月的全勤實習，展現精心設計的教案與主題牆飾！", icon: "fa-school-flag", color: "bg-pink-100 text-pink-500" },
+            { id: 2, title: "全國幼兒創意教具設計大賽 - 榮獲特優", category: "exhibition", date: "2025-10-02", author: "廖美玲", desc: "張雅婷與廖美玲組隊創作的『感官木質積木組』榮獲第一名肯定！", icon: "fa-trophy", color: "bg-amber-100 text-amber-500" },
+            { id: 3, title: "四幼甲 聖誕交換禮物與火鍋同樂會", category: "party", date: "2025-12-23", author: "黃柏翰", desc: "大家準備了溫馨禮物，並一起在教室煮火鍋慶祝聖誕節～", icon: "fa-gifts", color: "bg-red-100 text-red-500" },
+            { id: 4, title: "謝師宴籌備小組會議與試菜紀錄", category: "party", date: "2026-03-10", author: "林庭妤", desc: "畢籌會成員前往飯店挑選菜色與進行會場佈置模擬，敬請期待！", icon: "fa-utensils", color: "bg-purple-100 text-purple-500" },
+            { id: 5, title: "蒙特梭利教具操作工作坊研習", category: "exhibition", date: "2026-04-18", author: "許家豪", desc: "邀請知名托育中心園長親自蒞臨指導日常生活區與數學區教具操作。", icon: "fa-cubes", color: "bg-emerald-100 text-emerald-500" }
+        ];
+
+        const projectsData = [
+            { id: 1, title: "幼兒互動式數位繪本開發 -《小熊的感覺王國》", advisor: "張文華 教授", members: ["張雅婷(組長)", "陳怡君", "許家豪"], progress: 85, description: "結合平板互動與情緒表達引導，幫助 3-5 歲幼兒認識並調節自我情緒。" },
+            { id: 2, title: "幼幼兒感官統合多功能探索教具組研發", advisor: "林秀美 教授", members: ["廖美玲(組長)", "林庭妤"], progress: 90, description: "採用安全無毒木材與多質感布料，促進托嬰中心 1-2 歲嬰幼兒精細動作發展。" },
+            { id: 3, title: "幼兒園包容性戲劇展演課程教案設計與推廣", advisor: "陳淑芬 副教授", members: ["黃柏翰(組長)", "王小明", "李小華"], progress: 70, description: "融入特教幼兒體驗，透過故事劇場建立同儕接納與共融意識。" },
+            { id: 4, title: "雙語幼兒園食農教育單元課程之開發", advisor: "黃志明 助理教授", members: ["林小美(組長)", "趙大同"], progress: 75, description: "結合生活英語與種植體驗，設計適合大班幼兒的完整 4 週體驗教案。" }
+        ];
+
+        let storiesData = [
+            { id: 1, author: "陳怡君", kindergarten: "台北市立第一幼兒園 (中班)", tag: "班級經營", title: "第一次嘗試『角落探索時間』的帶領心得", date: "2025-10-12", content: "剛進實習班級時，孩子們對於新老師總是充滿好奇又有點害羞。透過引導益智區的積木建構遊戲，成功打開了小朋們的話匣子！看到孩子因為完成城堡而露出的燦爛笑容，所有的辛苦都值得了！", likes: 24, userLiked: false },
+            { id: 2, author: "林庭妤", kindergarten: "愛兒蒙特梭利托育中心 (托嬰部)", tag: "蒙特梭利", title: "觀察 1-2 歲嬰幼兒常規建立的點滴感動", date: "2025-11-05", content: "蒙特梭利強調『跟隨孩子』。在導師的指導下，我學習如何不急著幫幼兒代勞，而是耐心等待他們自己穿好鞋子。當孩子自己扣上最後一顆鈕扣並對我點頭時，真的超有成就感！", likes: 19, userLiked: false },
+            { id: 3, author: "廖美玲", kindergarten: "私立長庚紀念托嬰中心", tag: "教具應用", title: "手作感官球在幼兒情緒撫慰上的妙用", date: "2025-12-01", content: "自己設計的毛線感官球在分離焦慮期發揮了意想不到的效果！孩子撫摸著柔軟質感，情緒慢慢撫平下來。這證實了在學校學到的『感官撫慰理論』真的能落實於實務中！", likes: 31, userLiked: false }
+        ];
+
+        const downloadsData = [
+            { id: 1, category: "實習表單", name: "幼兒園集中實習單元教案撰寫空白範本", ext: "DOCX", size: "48 KB", downloads: 142 },
+            { id: 2, category: "實習表單", name: "幼兒行為觀察紀錄表 (ABC觀察法紀錄單)", ext: "PDF", size: "120 KB", downloads: 98 },
+            { id: 3, category: "畢業專題", name: "114學年度畢業專題計畫書格式規範與範本", ext: "DOCX", size: "85 KB", downloads: 210 },
+            { id: 4, category: "畢業專題", name: "畢業展覽直式海報標準模版 (PPTX檔)", ext: "PPTX", size: "2.4 MB", downloads: 165 },
+            { id: 5, category: "行政文件", name: "幼保系學生畢業門檻審查申請表", ext: "PDF", size: "65 KB", downloads: 87 }
+        ];
+
+        // ================= Tab Switcher =================
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            const targetSection = document.getElementById(`sec-${tabId}`);
+            const targetBtn = document.getElementById(`tab-${tabId}`);
+
+            if (targetSection && targetBtn) {
+                targetSection.classList.remove('hidden');
+                targetBtn.classList.add('active');
+            }
+        }
+
+        // ================= Render Functions =================
+        // Render Student Cards
+        function renderStudents(data = studentsData) {
+            const container = document.getElementById('studentGrid');
+            container.innerHTML = data.map(s => `
+                <div class="glass-card rounded-2xl p-5 border border-pink-100/80 shadow-sm hover:shadow-md transition-all group">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl ${s.avatarBg} flex items-center justify-center font-bold text-xl shadow-inner border border-white">
+                            ${s.name.charAt(0)}
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bold text-ecd-dark text-base group-hover:text-ecd-pink-dark transition-colors">${s.name}</h3>
+                                <span class="bg-ecd-pink/50 text-ecd-dark text-[10px] font-semibold px-2 py-0.5 rounded-full">${s.role}</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-0.5"><i class="fa-solid fa-id-card"></i> ${s.studentId}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-xs space-y-2">
+                        <div class="bg-gray-50/80 p-2.5 rounded-xl italic text-gray-600">
+                            <i class="fa-solid fa-quote-left text-ecd-pink-dark/40 mr-1"></i>${s.quote}
+                        </div>
+                        <div class="flex items-center justify-between text-gray-500 pt-1">
+                            <span class="text-gray-400">實習單位：</span>
+                            <span class="font-medium text-ecd-dark"><i class="fa-solid fa-house-chimney-window text-ecd-blue-dark mr-1"></i>${s.kindergarten}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterStudents() {
+            const term = document.getElementById('studentSearch').value.toLowerCase();
+            const filtered = studentsData.filter(s => 
+                s.name.toLowerCase().includes(term) || 
+                s.role.toLowerCase().includes(term) || 
+                s.kindergarten.toLowerCase().includes(term)
+            );
+            renderStudents(filtered);
+        }
+
+        // Render Schedule Table
+        function renderSchedule() {
+            const tbody = document.getElementById('scheduleTableBody');
+            tbody.innerHTML = scheduleData.map((row, idx) => `
+                <tr class="${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'} hover:bg-pink-50/30 transition-colors">
+                    <td class="p-3 font-semibold text-gray-500 bg-ecd-cream/30">${row.time}</td>
+                    <td class="p-3 font-medium text-ecd-dark">${row.mon}</td>
+                    <td class="p-3 font-medium text-ecd-dark">${row.tue}</td>
+                    <td class="p-3 font-medium text-ecd-dark">${row.wed}</td>
+                    <td class="p-3 font-medium text-ecd-dark">${row.thu}</td>
+                    <td class="p-3 font-medium text-ecd-dark">${row.fri}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Render Polls Section
+        function renderPolls() {
+            const container = document.getElementById('pollsContainer');
+            container.innerHTML = pollsData.map(poll => {
+                const totalVotes = poll.options.reduce((acc, curr) => acc + curr.votes, 0);
+                
+                return `
+                    <div class="glass-card rounded-2xl p-5 border border-pink-100 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="bg-ecd-pink text-ecd-dark text-xs px-2.5 py-0.5 rounded-full font-semibold">進行中</span>
+                                <span class="text-xs text-gray-400"><i class="fa-solid fa-users"></i> 總投票數：${totalVotes}</span>
+                            </div>
+                            <h3 class="font-bold text-ecd-dark text-base">${poll.title}</h3>
+                            <p class="text-xs text-gray-500 mt-1 mb-4">${poll.description}</p>
+
+                            <div class="space-y-3">
+                                ${poll.options.map(opt => {
+                                    const percent = totalVotes > 0 ? Math.round((opt.votes / totalVotes) * 100) : 0;
+                                    const isSelected = poll.userVotedOption === opt.id;
+
+                                    return `
+                                        <div onclick="voteOption(${poll.id}, '${opt.id}')" class="cursor-pointer group relative overflow-hidden rounded-xl border ${isSelected ? 'border-ecd-pink-dark bg-pink-50/40' : 'border-gray-200 hover:border-pink-300'} p-3 transition-all">
+                                            <!-- Progress Bar Background -->
+                                            <div class="absolute left-0 top-0 bottom-0 bg-pink-100/60 transition-all duration-500" style="width: ${percent}%;"></div>
+                                            
+                                            <div class="relative flex justify-between items-center text-xs sm:text-sm font-medium z-10">
+                                                <span class="flex items-center gap-2 ${isSelected ? 'text-ecd-pink-dark font-bold' : 'text-ecd-dark'}">
+                                                    <i class="fa-regular ${isSelected ? 'fa-circle-check text-ecd-pink-dark' : 'fa-circle text-gray-300'}"></i>
+                                                    ${opt.text}
+                                                </span>
+                                                <span class="text-xs text-gray-500 font-semibold">${percent}% (${opt.votes}票)</span>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-gray-100 text-[11px] text-gray-400 flex justify-between items-center">
+                            <span><i class="fa-solid fa-lock text-gray-300"></i> 每人限投一票（可更改選擇）</span>
+                            ${poll.userVotedOption ? '<span class="text-emerald-600 font-semibold"><i class="fa-solid fa-check"></i> 已完成投票</span>' : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function voteOption(pollId, optionId) {
+            const poll = pollsData.find(p => p.id === pollId);
+            if (!poll) return;
+
+            // If already voted, subtract previous vote
+            if (poll.userVotedOption) {
+                const prevOpt = poll.options.find(o => o.id === poll.userVotedOption);
+                if (prevOpt) prevOpt.votes--;
+            }
+
+            // Add new vote
+            const newOpt = poll.options.find(o => o.id === optionId);
+            if (newOpt) {
+                newOpt.votes++;
+                poll.userVotedOption = optionId;
+            }
+
+            renderPolls();
+            showToast("感謝您的投票！數據已即時更新");
+        }
+
+        // Render Gallery
+        function renderGallery(filter = 'all') {
+            const container = document.getElementById('galleryGrid');
+            const filtered = filter === 'all' ? galleryData : galleryData.filter(g => g.category === filter);
+
+            container.innerHTML = filtered.map(item => `
+                <div onclick="openPhotoModal(${item.id})" class="glass-card rounded-2xl overflow-hidden border border-pink-100 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+                    <div class="h-44 ${item.color} flex flex-col items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid ${item.icon} text-5xl opacity-80 mb-2"></i>
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-white/80 backdrop-blur-sm text-ecd-dark shadow-sm">點擊查看照片與紀錄</span>
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[10px] font-semibold text-ecd-pink-dark uppercase tracking-wider">${item.category}</span>
+                        <h3 class="font-bold text-ecd-dark text-sm mt-1 group-hover:text-ecd-pink-dark transition-colors line-clamp-1">${item.title}</h3>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">${item.desc}</p>
+                        <div class="flex justify-between items-center mt-3 pt-2 border-t border-gray-100 text-[11px] text-gray-400">
+                            <span><i class="fa-regular fa-calendar mr-1"></i>${item.date}</span>
+                            <span>紀錄人：${item.author}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterGallery(category) {
+            document.querySelectorAll('.gallery-tag-btn').forEach(btn => {
+                btn.classList.remove('bg-ecd-pink-dark', 'text-white');
+                btn.classList.add('bg-gray-100', 'text-gray-600');
+            });
+            event.target.classList.remove('bg-gray-100', 'text-gray-600');
+            event.target.classList.add('bg-ecd-pink-dark', 'text-white');
+
+            renderGallery(category);
+        }
+
+        function openPhotoModal(id) {
+            const item = galleryData.find(g => g.id === id);
+            if (!item) return;
+
+            document.getElementById('modalTitle').innerText = item.title;
+            document.getElementById('modalDesc').innerText = item.desc;
+            document.getElementById('modalCategory').innerText = item.category.toUpperCase();
+            document.getElementById('modalDate').innerText = `紀錄日期：${item.date}`;
+            document.getElementById('modalAuthor').innerText = `提供者：${item.author}`;
+            
+            const imgContainer = document.getElementById('modalImageContainer');
+            imgContainer.className = `h-64 sm:h-80 ${item.color} flex flex-col items-center justify-center relative overflow-hidden`;
+            imgContainer.innerHTML = `<i class="fa-solid ${item.icon} text-7xl mb-3"></i><p class="text-xs font-medium text-ecd-dark/70">[活動精彩實況相片展示區]</p>`;
+
+            document.getElementById('photoModal').classList.remove('hidden');
+        }
+
+        function closePhotoModal() {
+            document.getElementById('photoModal').classList.add('hidden');
+        }
+
+        // Render Projects
+        function renderProjects() {
+            const container = document.getElementById('projectsGrid');
+            container.innerHTML = projectsData.map(p => `
+                <div class="glass-card rounded-2xl p-5 border border-pink-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <span class="bg-ecd-blue text-ecd-dark text-xs px-2.5 py-0.5 rounded-full font-semibold">指導老師：${p.advisor}</span>
+                            <span class="text-xs font-bold text-ecd-pink-dark">完成度 ${p.progress}%</span>
+                        </div>
+                        <h3 class="font-bold text-ecd-dark text-base mt-1">${p.title}</h3>
+                        <p class="text-xs text-gray-500 mt-2 leading-relaxed">${p.description}</p>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-gray-100 space-y-3">
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-ecd-pink-dark h-full rounded-full transition-all duration-500" style="width: ${p.progress}%"></div>
+                        </div>
+
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="text-gray-400">專題組員：</span>
+                            <div class="flex gap-1.5 flex-wrap">
+                                ${p.members.map(m => `<span class="bg-gray-100 text-ecd-dark px-2 py-0.5 rounded-md text-[11px] font-medium">${m}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Stories
+        function renderStories() {
+            const container = document.getElementById('storiesList');
+            container.innerHTML = storiesData.map(s => `
+                <div class="glass-card rounded-2xl p-5 border border-pink-100 shadow-sm space-y-3">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-gray-100 pb-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-ecd-pink/60 flex items-center justify-center font-bold text-ecd-dark text-sm">
+                                ${s.author.charAt(0)}
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-ecd-dark text-sm">${s.author}</h4>
+                                <p class="text-xs text-gray-400"><i class="fa-solid fa-location-dot text-ecd-pink-dark mr-1"></i>${s.kindergarten}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="bg-ecd-blue/60 text-ecd-dark text-[11px] font-semibold px-2.5 py-0.5 rounded-full">${s.tag}</span>
+                            <span class="text-xs text-gray-400">${s.date}</span>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold text-ecd-dark text-base">${s.title}</h3>
+                    <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">${s.content}</p>
+
+                    <div class="flex justify-between items-center pt-2 text-xs">
+                        <button onclick="toggleLike(${s.id})" class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl ${s.userLiked ? 'bg-pink-100 text-ecd-pink-dark font-bold' : 'bg-gray-50 text-gray-500 hover:bg-gray-100'} transition-all">
+                            <i class="fa-${s.userLiked ? 'solid' : 'regular'} fa-heart text-ecd-pink-dark"></i>
+                            <span>實用靈感 (${s.likes})</span>
+                        </button>
+                        <span class="text-gray-400"><i class="fa-regular fa-comment"></i> 回覆討論</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleLike(id) {
+            const story = storiesData.find(s => s.id === id);
+            if (!story) return;
+
+            if (story.userLiked) {
+                story.likes--;
+                story.userLiked = false;
+            } else {
+                story.likes++;
+                story.userLiked = true;
+                showToast("已按讚此篇實習心得！");
+            }
+            renderStories();
+        }
+
+        // Render Directory
+        function renderDirectory(data = studentsData) {
+            const tbody = document.getElementById('directoryTableBody');
+            tbody.innerHTML = data.map(s => `
+                <tr class="hover:bg-pink-50/20 transition-colors">
+                    <td class="p-3 font-medium text-gray-400">${s.studentId}</td>
+                    <td class="p-3 font-bold text-ecd-dark">${s.name}</td>
+                    <td class="p-3"><span class="bg-ecd-pink/40 text-ecd-dark text-xs px-2 py-0.5 rounded-md font-medium">${s.role}</span></td>
+                    <td class="p-3 font-medium text-gray-600">${s.phone}</td>
+                    <td class="p-3 font-medium text-gray-600">${s.lineId}</td>
+                    <td class="p-3 text-center">
+                        <button onclick="copyToClipboard('${s.email}', 'Email')" class="bg-gray-100 hover:bg-ecd-pink/50 text-ecd-dark text-xs px-2.5 py-1 rounded-lg transition-all mr-1">
+                            <i class="fa-regular fa-envelope"></i>
+                        </button>
+                        <button onclick="copyToClipboard('${s.lineId}', 'LINE ID')" class="bg-gray-100 hover:bg-ecd-pink/50 text-ecd-dark text-xs px-2.5 py-1 rounded-lg transition-all">
+                            <i class="fa-brands fa-line"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function filterDirectory() {
+            const term = document.getElementById('dirSearch').value.toLowerCase();
+            const filtered = studentsData.filter(s => 
+                s.name.toLowerCase().includes(term) || 
+                s.studentId.toLowerCase().includes(term)
+            );
+            renderDirectory(filtered);
+        }
+
+        // Render Downloads
+        function renderDownloads() {
+            const container = document.getElementById('downloadsGrid');
+            container.innerHTML = downloadsData.map(d => `
+                <div class="glass-card rounded-2xl p-4 border border-pink-100 shadow-sm flex items-center justify-between hover:shadow-md transition-all">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-ecd-pink/40 text-ecd-pink-dark font-bold text-xs flex flex-col items-center justify-center border border-pink-200">
+                            <i class="fa-solid fa-file-word text-base mb-0.5"></i>
+                            <span>${d.ext}</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-semibold text-ecd-pink-dark bg-pink-50 px-2 py-0.5 rounded-md">${d.category}</span>
+                            <h4 class="font-bold text-ecd-dark text-xs sm:text-sm mt-1 line-clamp-1">${d.name}</h4>
+                            <p class="text-[11px] text-gray-400 mt-0.5">檔案大小：${d.size} • 下載次數：${d.downloads} 次</p>
+                        </div>
+                    </div>
+                    <button onclick="simulateDownload(${d.id})" class="bg-ecd-pink-dark hover:bg-pink-600 text-white text-xs px-3 py-2 rounded-xl transition-all shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+                        <i class="fa-solid fa-download"></i> 下載
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function simulateDownload(id) {
+            const item = downloadsData.find(d => d.id === id);
+            if (item) {
+                item.downloads++;
+                renderDownloads();
+                showToast(`正在下載：${item.name}`);
+            }
+        }
+
+        // Utility: Copy to Clipboard
+        function copyToClipboard(text, type) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast(`已成功複製 ${type}：${text}`);
+        }
+
+        // Toast Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            }, 3000);
+        }
+
+        // Placeholder for posting a story
+        function togglePostStoryModal() {
+            showToast("實習心得發布功能：請輸入文章標題與內文後提交審核！");
+        }
+
+        // ================= Initialize App =================
+        window.onload = function() {
+            renderStudents();
+            renderSchedule();
+            renderPolls();
+            renderGallery();
+            renderProjects();
+            renderStories();
+            renderDirectory();
+            renderDownloads();
+        };
+    </script>
+</body>
+</html>
